@@ -25,5 +25,40 @@ def regularExpressionExample():
     result3 = regex1.search('James is the best basketball player in the world!')
     print(result3.group())
 
+    # ^ 以Hello字符串开头
+    regex2 = re.compile(r'^Hello')
+    result4 = regex2.search('HelloWrold')
+    print(result4.group())
+
+    # $ 以数字结尾
+    regex3 = re.compile(r'\d+$')
+    result3 = regex3.search('Your number is 42')
+    print(result3.group())
+
+    # . 匹配除换行外的任何一个字符
+    regex4 = re.compile(r'.at')
+    result4 = regex4.findall('The cat in the hat sat on the flat mat atttt.')
+    print(result4)
+
+    # .* 匹配任何字符
+    regex5 = re.compile(r'First Name:(.*) Last Name:(.*)')
+    result5 = regex5.search('First Name: Lebron Last Name: James')
+    print(result5.group(1))
+    print(result5.group(2))
+    print(result5.group())
+
+    # 贪婪模式(.*)和非贪婪模式(.*?)
+    regex6 = re.compile(r'<.*?>')
+    regex7 = re.compile(r'<.*>')
+    result6 = regex6.search('<To serve man> for dinner.>')
+    result7 = regex7.search('<To serve man> for dinner.> Everything goes well!')
+    print(result6.group())
+    print(result7.group())
+    
+    # 忽略大小写进行匹配
+    regex8 = re.compile(r'HeLlO',re.IGNORECASE)
+    result8 = regex8.search('Hello world')
+    print(result8.group())
+    
 regularExpressionExample()
     
